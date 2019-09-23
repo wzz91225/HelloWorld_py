@@ -14,7 +14,12 @@ def BubbleSort(f):
 
 
 def InputArr():
-    f = [int(i) for i in input().split(" ")]
+    try:
+        infile = open('sort.in', 'r')
+        f = [int(i) for i in infile.read().split(" ")]
+        infile.close()
+    except IOError:
+        f = [int(i) for i in input().split(" ")]
 
     # f = []
     # for i in input().split(" "):
@@ -26,8 +31,15 @@ def InputArr():
 
 
 def OutputArr(f):
-    for i in range(len(f)):
-        print(f[i])
+    try:
+        outfile = open('sort.out', 'w')
+        for i in range(len(f) - 1):
+            outfile.write(str(f[i]) + ' ')
+        outfile.write(str(f[-1]))
+        outfile.close()
+    except IOError:
+        for i in range(len(f)):
+            print(f[i])
 
 
 
