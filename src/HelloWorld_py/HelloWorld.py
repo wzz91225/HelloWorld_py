@@ -11,3 +11,21 @@ for i in range(2, 5):
         print('else i = ' + str(i))
 else:
     print('else finish')
+
+
+
+def do_test():
+    def do_globe():
+        global str
+        str = "global"
+    
+    # global str
+    str = 'str test'
+    do_globe()
+    print('afer do_globe: ' + str)
+
+
+
+str = 'str init'
+do_test()
+print('main: ' + str)
