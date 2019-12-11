@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import sys
+import os.path
 import math
 
 
@@ -81,7 +83,7 @@ def closest(f, n):
 
 def input_data():
 	try:
-		infile = open('closest.in', 'r')
+		infile = open(os.path.join(sys.path[0], 'closest.in'), 'r')
 		n = int(infile.readline())
 		f = [[] for i in range(n)]
 		for i in range(n):

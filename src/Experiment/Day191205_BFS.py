@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import sys
+import os.path
+
 
 
 class Graph():
     def __init__(self):
         try:
-            infile = open('bfs.in', 'r')
+            infile = open(os.path.join(sys.path[0], 'bfs.in'), 'r')
             n = int(infile.readline())
             m = int(infile.readline())
             f = [[] for i in range(m)]

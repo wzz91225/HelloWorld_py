@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import sys
+import os.path
+
 
 
 def BubbleSort(f):
@@ -14,7 +17,7 @@ def BubbleSort(f):
 
 def InputArr():
     try:
-        infile = open('sort.in', 'r')
+        infile = open(os.path.join(sys.path[0], 'sort.in'), 'r')
         f = [int(i) for i in infile.read().split(" ")]
         infile.close()
     except IOError:
@@ -31,7 +34,7 @@ def InputArr():
 
 def OutputArr(f):
     try:
-        outfile = open('sort.out', 'w')
+        outfile = open(os.path.join(sys.path[0], 'sort.out'), 'w')
         for i in range(len(f) - 1):
             outfile.write(str(f[i]) + ' ')
         outfile.write(str(f[-1]))
