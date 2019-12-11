@@ -8,7 +8,7 @@ import os.path
 class Graph():
     def __init__(self):
         try:
-            infile = open(os.path.join(sys.path[0], 'bfs.in'), 'r')
+            infile = open(os.path.join(sys.path[0], 'bfsa.in'), 'r')
             n = int(infile.readline())
             m = int(infile.readline())
             f = [[] for i in range(m)]
@@ -17,8 +17,9 @@ class Graph():
             infile.close()
         except IOError:
             n = int(input())
-            f = [[] for i in range(n)]
-            for i in range(n):
+            m = int(input())
+            f = [[] for i in range(m)]
+            for i in range(m):
                 f[i] = [int(a) for a in input().split()]
         
         self.n = n
