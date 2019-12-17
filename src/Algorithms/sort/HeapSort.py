@@ -106,6 +106,7 @@ def OutputArr(f):
 
 
 
-f = InputArr()
-HeapSort(f)
-OutputArr(f)
+if __name__ == "__main__":
+    f = InputArr()
+    HeapSort(f)
+    OutputArr(f)

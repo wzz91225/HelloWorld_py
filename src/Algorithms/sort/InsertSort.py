@@ -42,6 +42,7 @@ def OutputArr(f):
 
 
 
-f = InputArr()
-InsertSort(f)
-OutputArr(f)
+if __name__ == "__main__":
+    f = InputArr()
+    InsertSort(f)
+    OutputArr(f)

@@ -71,6 +71,7 @@ def OutputArr(f):
 
 
 
-f = InputArr()
-MergeSort(f, 0, len(f) - 1)
-OutputArr(f)
+if __name__ == "__main__":
+    f = InputArr()
+    MergeSort(f, 0, len(f) - 1)
+    OutputArr(f)

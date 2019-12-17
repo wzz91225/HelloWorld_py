@@ -45,7 +45,7 @@ def OutputArr(f):
 
 
 
-
-f = InputArr()
-BubbleSort(f)
-OutputArr(f)
+if __name__ == "__main__":
+    f = InputArr()
+    BubbleSort(f)
+    OutputArr(f)

@@ -58,6 +58,7 @@ def OutputArr(f):
 
 
 
-f = InputArr()
-QuickSort(f, 0, len(f) - 1)
-OutputArr(f)
+if __name__ == "__main__":
+    f = InputArr()
+    QuickSort(f, 0, len(f) - 1)
+    OutputArr(f)
