@@ -2,12 +2,14 @@
 
 
 
-def dp(str0, str1):
+def lcs_dp(str0, str1):
 	str0 = ' ' + str0
 	str1 = ' ' + str1
 	f = [[0 for j in range(len(str1))] for i in range(len(str0))]
 	
-	#				0							, i == 0 || j == 0
+	# f[i][j]表示str0[:i+1]与str1[:j+1] 的最长公共子序列
+	# DP方程：
+	#				0							, i == 0 or j == 0
 	# f[i][j] = {	f[i-1][j-1] + 1				, str0[i] == str1[j]
 	#				max(f[i-1][j], f[i][j-1])	, str0[i] != str1[j]
 	for i in range(1, len(str0)):
@@ -40,4 +42,4 @@ def dp(str0, str1):
 
 
 if __name__ == "__main__":
-	print(dp(input(), input()))
+	print(lcs_dp(input(), input()))
