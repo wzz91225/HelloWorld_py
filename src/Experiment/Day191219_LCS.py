@@ -42,4 +42,8 @@ def lcs_dp(str0, str1):
 
 
 if __name__ == "__main__":
-	print(lcs_dp(input(), input()))
+	print('Please Input String 1:', end = '\n  ')
+	str1 = input()
+	print('Please Input String 2:', end = '\n  ')
+	str2 = input()
+	print('LCS:\n  ', lcs_dp(str1, str2))

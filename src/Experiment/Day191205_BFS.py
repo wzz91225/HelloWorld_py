@@ -56,7 +56,10 @@ class Graph():
 
 if __name__ == "__main__":
     graph1 = Graph()
+    print('Please Input Start Node:', end = '\n  ')
     begin = int(input())
+    print('Please Input Stop Node:', end = '\n  ')
     end = int(input())
+    print('Path:', end = '\n  ')
     dis = graph1.shortest_BFS(begin, end)
     print('distance = ', dis)

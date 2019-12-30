@@ -17,5 +17,7 @@ def calc_pi(test_num: int):
 
 
 
-if __name__ == "__main__":
-    print(calc_pi(int(input())))
+if __name__ == "__main__": 
+    print('Please Input Test Num:', end = '\n  ')
+    test_num = int(input())
+    print('Pi = ', calc_pi(test_num))

@@ -6,7 +6,7 @@ import math
 
 
 def f(x):
-    return x**2
+    return x**2 + math.sin(x) + 2 * x - 6
 
 
 
@@ -21,4 +21,11 @@ def definite_integral(low: float, up: float, test_num: int):
 
 
 if __name__ == "__main__":
-    print(definite_integral(float(input()), float(input()), int(input())))
+    print('Please Input Low Num:', end = '\n  ')
+    low = float(input())
+    print('Please Input Up Num:', end = '\n  ')
+    up = float(input())
+    print('Please Input Test Num:', end = '\n  ')
+    test_num = int(input())
+    print('Result:', end = '\n  ')
+    print(definite_integral(low, up, test_num))
