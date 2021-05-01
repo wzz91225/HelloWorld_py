@@ -14,6 +14,9 @@ SHOW_RESULT = True
 # 导入数据csv文件名
 input_csv_filename = "94 bpm.csv"
 
+# 导出数据csv文件名
+output_csv_filename = "alldata.csv"
+
 # 数据库连接相关参数
 MySQL_Database_host = "localhost"
 MySQL_Database_user = ""        # 数据库用户名
@@ -22,7 +25,7 @@ MySQL_Database_password = ""    # 数据库密码
 # 数据库创建相关参数
 drop_exist_database = False         # 是否删除已有同名数据库
 database_name = "project_gjs"       # 数据库名称
-drop_exist_table = True             # 是否删除已有同名表格
+drop_exist_table = False            # 是否删除已有同名表格
 table_name = "patient"              # 表格名称
 # ************************** END: parameter configuration **************************
 
@@ -46,6 +49,8 @@ def read_data(input_csv_filename):
         # arr1 = [row[" gyroZ (rad/s)"] for row in reader]
         # arr2 = [row[" magX (碌T)"] for row in reader]    # useless
         # arr3 = [row[" magY (碌T)"] for row in reader]    # useless
+
+        csvfile.close()
 
     # delete title
     arr1.pop(0)
@@ -182,6 +187,21 @@ if __name__ == "__main__":
             print("len=", len(x[5]), ":", x[5][:100])
             print("len=", len(x[6]), ":", x[6][:100])
     # ************************** END: insert data **************************
+
+
+
+    # ************************** BEGIN: output data **************************
+    cursor.execute("SELECT * FROM " + table_name)
+
+    with open(output_csv_filename, "w") as csvfile:
+        writer = csv.writer(csvfile, lineterminator = "\n")     # lineterminator defaults to '\r\n'
+        writer.writerow(["id", "name", "sex", "birth_year", "datacolume1", "datacolume2", "datacolume3"])
+        writer.writerows(cursor)
+        
+        csvfile.close()
+    # ************************** END: output data **************************
+
+
 
 
     # close database
