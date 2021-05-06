@@ -8,25 +8,22 @@ import mysql.connector
 
 
 # ************************** BEGIN: parameter configuration **************************
-# 是否输出每步操作结果
+# show every operation result(or not) 
 SHOW_RESULT = True
 
-# 导入数据csv文件名
+# 导入csv文件名 input csv file name
 input_csv_filename = "94 bpm.csv"
 
-# 导出数据csv文件名
-output_csv_filename = "alldata.csv"
-
-# 数据库连接相关参数
+#  connect database to relevant parameter
 MySQL_Database_host = "localhost"
-MySQL_Database_user = ""        # 数据库用户名
-MySQL_Database_password = ""    # 数据库密码
+MySQL_Database_user = ""        #  username
+MySQL_Database_password = ""    #  password
 
-# 数据库创建相关参数
-drop_exist_database = False         # 是否删除已有同名数据库
-database_name = "project_gjs"       # 数据库名称
-drop_exist_table = False            # 是否删除已有同名表格
-table_name = "patient"              # 表格名称
+# create relevant parameter into database
+drop_exist_database = False         # delete existing database with same name(or not)
+database_name = "project_gjs"       # name of database
+drop_exist_table = True             # delete existing table with same name(or not)
+table_name = "patient"              # name of the table
 # ************************** END: parameter configuration **************************
 
 
@@ -49,8 +46,6 @@ def read_data(input_csv_filename):
         # arr1 = [row[" gyroZ (rad/s)"] for row in reader]
         # arr2 = [row[" magX (碌T)"] for row in reader]    # useless
         # arr3 = [row[" magY (碌T)"] for row in reader]    # useless
-
-        csvfile.close()
 
     # delete title
     arr1.pop(0)
@@ -89,7 +84,7 @@ if __name__ == "__main__":
     [arr1, arr2, arr3] = read_data(input_csv_filename)
 
     if SHOW_RESULT:
-        print("\narray - first and last number:")
+        print("\narray:")
         print(arr1[0], arr1[-1])
         print(arr2[0], arr2[-1])
         print(arr3[0], arr3[-1])
@@ -98,15 +93,15 @@ if __name__ == "__main__":
 
 
     # ************************** BEGIN: array to string **************************
-    str1 = array2string(arr1)
+    str1 = array2string(arr1)  #Casting array to string
     str2 = array2string(arr2)
     str3 = array2string(arr3)
     
     if SHOW_RESULT:
         print("\nstring:")
-        print("len=", len(str1), ":", str1[:100])  
-        print("len=", len(str2), ":", str2[:100])  
-        print("len=", len(str3), ":", str3[:100])
+        print(str1[:100])  
+        print(str2[:100])  
+        print(str3[:100])
     # ************************** END: array to string **************************
 
 
@@ -183,25 +178,10 @@ if __name__ == "__main__":
         print("\n" + table_name + " data:")
         for x in cursor:
             print(x[0:3])
-            print("len=", len(x[4]), ":", x[4][:100])
-            print("len=", len(x[5]), ":", x[5][:100])
-            print("len=", len(x[6]), ":", x[6][:100])
+            print(x[4][:100])
+            print(x[5][:100])
+            print(x[6][:100])
     # ************************** END: insert data **************************
-
-
-
-    # ************************** BEGIN: output data **************************
-    cursor.execute("SELECT * FROM " + table_name)
-
-    with open(output_csv_filename, "w") as csvfile:
-        writer = csv.writer(csvfile, lineterminator = "\n")     # lineterminator defaults to '\r\n'
-        writer.writerow(["id", "name", "sex", "birth_year", "datacolume1", "datacolume2", "datacolume3"])
-        writer.writerows(cursor)
-        
-        csvfile.close()
-    # ************************** END: output data **************************
-
-
 
 
     # close database
