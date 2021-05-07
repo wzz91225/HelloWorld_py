@@ -8,22 +8,22 @@ import mysql.connector
 
 
 # ************************** BEGIN: parameter configuration **************************
-# show every operation result(or not) 
+# show the results of each step in terminal(or not)
 SHOW_RESULT = True
 
-# 导入csv文件名 input csv file name
+# csv file name to input data
 input_csv_filename = "94 bpm.csv"
 
-#  connect database to relevant parameter
+# connect database to relevant parameter
 MySQL_Database_host = "localhost"
-MySQL_Database_user = ""        #  username
-MySQL_Database_password = ""    #  password
+MySQL_Database_user = ""        # username of DB
+MySQL_Database_password = ""    # database of DB
 
-# create relevant parameter into database
-drop_exist_database = False         # delete existing database with same name(or not)
+# parameters to create database&table
+drop_exist_database = False         # drop database if exists(or not)
 database_name = "project_gjs"       # name of database
-drop_exist_table = True             # delete existing table with same name(or not)
-table_name = "patient"              # name of the table
+drop_exist_table = True             # drop table if exists(or not)
+table_name = "patient"              # name of table
 # ************************** END: parameter configuration **************************
 
 
@@ -41,11 +41,6 @@ def read_data(input_csv_filename):
                 arr1.append(row[6])
                 arr2.append(row[7])
                 arr3.append(row[8])
-    
-        # reader = csv.DictReader(csvfile)
-        # arr1 = [row[" gyroZ (rad/s)"] for row in reader]
-        # arr2 = [row[" magX (碌T)"] for row in reader]    # useless
-        # arr3 = [row[" magY (碌T)"] for row in reader]    # useless
 
     # delete title
     arr1.pop(0)
@@ -57,12 +52,6 @@ def read_data(input_csv_filename):
 
 
 def array2string(arr):
-    # str0 = str(arr)
-    # str0 = str0.replace('[', '')
-    # str0 = str0.replace(']', '')
-    # str0 = str0.replace('\'', '')
-    # str0 = str0.replace(' ', '')
-
     return str(arr).replace('[', '').replace(']', '').replace('\'', '').replace(' ', '')
 
 

@@ -8,20 +8,20 @@ import mysql.connector
 
 
 # ************************** BEGIN: parameter configuration **************************
-# 是否输出每步操作结果
+# show the results of each step in terminal(or not)
 SHOW_RESULT = True
 
-# 导出数据csv文件名前缀
+# the prefix of csv file name to output data
 output_csv_filename_pr = "data_"
 
-# 数据库连接相关参数
+# connect database to relevant parameter
 MySQL_Database_host = "localhost"
-MySQL_Database_user = ""        # 数据库用户名
-MySQL_Database_password = ""    # 数据库密码
+MySQL_Database_user = ""        # username of DB
+MySQL_Database_password = ""    # database of DB
 
-# 数据库读取相关参数
-database_name = "project_gjs"       # 数据库名称
-table_name = "patient"              # 表格名称
+# name of database&table
+database_name = "project_gjs"       # name of database
+table_name = "patient"              # name of table
 # ************************** END: parameter configuration **************************
 
 
@@ -77,17 +77,14 @@ if __name__ == "__main__":
         id_count = id_arr.count(int(getid))
 
     id_index = id_arr.index(int(getid))
-    # str1 = data[id_index][4]
-    # str2 = data[id_index][5]
-    # str3 = data[id_index][6]
-
-    # arr1 = [float(x) for x in data[id_index][4].split(',')]
-    # arr2 = [float(x) for x in data[id_index][5].split(',')]
-    # arr3 = [float(x) for x in data[id_index][6].split(',')]
 
     arr1 = data[id_index][4].split(',')
     arr2 = data[id_index][5].split(',')
     arr3 = data[id_index][6].split(',')
+
+    # arr1 = [float(x) for x in data[id_index][4].split(',')]
+    # arr2 = [float(x) for x in data[id_index][5].split(',')]
+    # arr3 = [float(x) for x in data[id_index][6].split(',')]
     # ************************** END: select data **************************
 
 
